@@ -43,33 +43,27 @@
       "group": "Get Started",
       "pages": [
         "introduction",
-        "quickstart",
-        "development"
+        "installation",
+        "updates"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Setup",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "setup/cron-job-setup",
+        "setup/pusher-setup",
+        "setup/mail-server",
+        "setup/pricing-plans",
+        "setup/landing-page-setup",
+        "setup/translations",
+        "setup/localization-and-time-format",
+        "setup/social-login",
+        "setup/cloud-storage",
+        "setup/google-map-api",
+        "setup/one-signal-web-push-notification",
+        "setup/custom-css",
+        "setup/queues",
+        "setup/email-verification"
       ]
     }
   ],
