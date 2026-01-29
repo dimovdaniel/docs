@@ -29,6 +29,9 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },{
+      "name": "EasyRank",
+      "url": "api-reference"
     }
   ],
   "anchors": [
