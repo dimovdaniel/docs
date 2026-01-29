@@ -1,54 +1,41 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "10 SaaS Script",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#DC2626",
+    "light": "#EF4444",
+    "dark": "#B91C1C",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#DC2626",
+      "to": "#EF4444"
     }
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "https://help.mobidonia.com/"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Get it now",
+    "url": "https://aisaass.lovable.app"
   },
   "tabs": [
     {
       "name": "API Reference",
       "url": "api-reference"
-    },{
-      "name": "EasyRank",
-      "url": "api-reference"
     }
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
       "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "icon": "discord",
+      "url": "https://discord.gg/DqGFXsth"
     }
   ],
   "navigation": [
