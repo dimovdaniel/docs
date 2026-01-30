@@ -1,71 +1,52 @@
 ---
 title: Introduction
-description: 'Welcome to the home of your new Mobidonia DOCS'
+description: 'Everything you need to install, configure, and run SuperSaaS.'
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
+SuperSaaS is a Laravel-based SaaS application you can self-host. These docs cover:
 
-## Setting up
+- **Installation**: running the project locally, on shared hosting, or on a VPS.
+- **Admin setup**: configuring authentication, AI, subscriptions, queues, plugins, translations, landing page, and email delivery.
+- **Operations**: keeping background jobs and scheduled tasks running in production.
 
-The first step to world-class documentation is setting up your editing environments.
+### Start here
 
 <CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
+  <Card title="Installation" icon="download" href="/installation">
+    Install locally (Herd + DBngin), on shared hosting, or via Forge on a VPS.
   </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
+  <Card title="Installation Wizard" icon="magic" href="/installation/wizard">
+    Complete the 4-step web installer (site, database, WorkOS, finalize).
   </Card>
 </CardGroup>
 
-## Make it yours
+### Admin setup guides
 
-Update your docs to your brand and add valuable content for the best user conversion.
+After installation, log in as an **admin** and configure your instance:
 
 <CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
+  <Card title="WorkOS Authentication" icon="id-badge" href="/setup/authentication-setup">
+    Configure WorkOS credentials, redirects, and assign the admin role.
   </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
+  <Card title="Queues" icon="arrows-rotate" href="/setup/queues">
+    Recommended: run real Laravel queues on Forge. Shared hosting fallback included.
   </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
-  >
-    Build interactive features and designs to guide your users
+  <Card title="AI Setup" icon="sparkles" href="/setup/ai-setup">
+    Configure OpenRouter API key and model under Settings → Admin → AI.
   </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
+  <Card title="Pricing Plans" icon="credit-card" href="/setup/pricing-plans">
+    Configure subscriptions and payment providers (SaaS version only).
+  </Card>
+  <Card title="Plugins" icon="puzzle-piece" href="/setup/plugins-setup">
+    Manage plugin-specific settings from Settings → Admin → Plugins.
+  </Card>
+  <Card title="Translations" icon="language" href="/setup/translations">
+    Manage languages and UI strings from the translations UI.
+  </Card>
+  <Card title="Landing Page" icon="wand-magic-sparkles" href="/setup/landing-page-setup">
+    Configure hero content, layout, gradient, and footer text.
+  </Card>
+  <Card title="Mail Server" icon="envelope" href="/setup/mail-server">
+    Configure SMTP/API credentials and verify outbound email delivery.
   </Card>
 </CardGroup>

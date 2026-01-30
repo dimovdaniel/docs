@@ -3,4 +3,78 @@ title: Queues
 description: Configure background job processing.
 ---
 
-Set the queue driver and verify jobs are processed correctly.
+This project performs certain tasks asynchronously (for example: background processing, content generation, integrations, etc.). Running a queue worker ensures those tasks are processed reliably and quickly.
+
+### Recommended approach (VPS): Real Laravel Queues
+
+If you are deploying on a VPS (for example via **Laravel Forge**), you should run **real Laravel queue workers**. This is the recommended setup for production because it is reliable, scalable, and designed for long-running background work.
+
+#### 1. Set your queue connection
+
+In your `.env`, configure a real queue driver (common choices are `database` or `redis`):
+
+```env
+QUEUE_CONNECTION=database
+```
+
+If you use `database`, make sure your migrations have been run so the queue tables exist.
+
+#### 2. Running queue workers on Laravel Forge
+
+On Forge, you typically run queue workers via **Supervisor** (Forge can manage this for you).
+
+- **Create a queue worker** in Forge for your site (Supervisor / Queue Workers)
+- **Set the command** to run your worker, for example:
+
+```bash
+php /home/forge/yourdomain.com/artisan queue:work --sleep=3 --tries=3 --timeout=120
+```
+
+Notes:
+- **Path**: Replace `/home/forge/yourdomain.com` with your actual site path on the server.
+- **Multiple workers**: If you have higher traffic / more background jobs, run multiple workers.
+- **Deployments**: After a deploy, you may need to restart workers so they pick up new code (Forge can do this automatically depending on your setup).
+
+#### 3. Don’t forget the scheduler (recommended)
+
+Even with queue workers, many Laravel apps also rely on the scheduler. Add the standard cron entry (once per minute):
+
+```bash
+* * * * * php /home/forge/yourdomain.com/artisan schedule:run >> /dev/null 2>&1
+```
+
+### Shared hosting fallback: Cron calling `/job/{count}`
+
+If you are on **shared hosting** and cannot run long-running `php artisan queue:work` processes, you can use the built-in fallback route that processes a number of jobs per request:
+
+```php
+Route::get('job/{count?}', [JobController::class, 'process'])->name('jobs.process');
+```
+
+This route is defined in:
+- `supersaas/routes/web.php`
+
+#### 1. Create a cron job on your shared host
+
+Create a cron job that hits your application URL on a schedule (for example every minute):
+
+```bash
+* * * * * wget -q -O /dev/null "https://yourdomain.com/job/10"
+```
+
+Or using `curl`:
+
+```bash
+* * * * * curl -fsS "https://yourdomain.com/job/10" > /dev/null
+```
+
+Where:
+- `10` is the **count** (how many jobs to process per request). Tune this value based on your hosting limits.
+
+<Warning>
+  **Important**: This HTTP cron approach is a fallback for shared hosting only. For best reliability and performance, use real Laravel queues on a VPS.
+</Warning>
+
+#### 2. Security note
+
+Because this is a public URL endpoint, ensure you are comfortable exposing it. If you are deploying to a public domain, consider restricting access (for example by adding an additional layer of protection in your hosting panel) so random traffic cannot trigger it.

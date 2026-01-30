@@ -1,6 +1,76 @@
 ---
-title: Pricing Plans
-description: Define plan tiers and billing rules.
+title: Pricing Plans & Subscriptions
+description: Define plan tiers and configure your payment provider.
 ---
 
-Create pricing plans and ensure each plan maps to the correct features.
+If you are using the **SaaS version** of the application, you can manage pricing plans and configure your subscription payment provider from the admin dashboard.
+
+### Accessing Subscription Settings
+
+To manage your pricing and payments, you must be logged in as an **administrator**.
+
+1.  Navigate to **Settings** in the main sidebar.
+2.  Go to **Admin** > **Subscriptions**.
+
+### Subscription Settings
+
+Choose your preferred subscription payment provider. Each plan's **External ID** in our application must match a product or price ID in your chosen provider's dashboard.
+
+#### 🍋 Lemon Squeezy (Merchant of Record)
+
+**How to get your credentials:**
+1.  Go to **Settings** → **API** in your [Lemon Squeezy dashboard](https://app.lemonsqueezy.com/settings/api).
+2.  Click **"Create API Key"** and give it a name.
+3.  Copy the API key (it's only shown once!).
+4.  Your **Store ID** can be found in **Settings** → **Stores**.
+
+**Configuration Fields:**
+- **API Key**: Your Lemon Squeezy API key.
+- **Store ID**: Your unique store identifier.
+
+#### ❄️ Polar (Open Source Funding)
+
+**How to get your credentials:**
+1.  Go to your organization's [Polar Dashboard](https://polar.sh/dashboard).
+2.  Navigate to **Settings** → **General**.
+3.  Scroll down to **"Developers"** and click **"New Token"**.
+4.  Give it a name, set expiration, and select required scopes.
+5.  Your **Organization Slug** is in your dashboard URL: `polar.sh/dashboard/{slug}`.
+
+**Configuration Fields:**
+- **Access Token**: Your Polar Organization Access Token.
+- **Organization Slug**: Your organization's unique slug.
+
+#### 🏓 Paddle (Merchant of Record)
+
+**How to get your credentials:**
+1.  Go to **Developer Tools** → **Authentication** in [Paddle](https://vendor.paddle.com/).
+2.  Click **"New API key"** in the API keys tab.
+3.  Enter a name, description, and set expiry date.
+4.  Select the required permissions and save.
+5.  Copy the API key immediately (shown only once!).
+
+<Tip>
+  Use the **Sandbox** environment for testing. Switch to **Live** when you are ready for production.
+</Tip>
+
+**Configuration Fields:**
+- **API Key**: Your Paddle API key.
+- **Environment**: Choose between `Sandbox` or `Live`.
+
+---
+
+### Managing Plans Manually
+
+As an administrator, you have the flexibility to override subscription settings for specific companies.
+
+1.  Navigate to the **Companies** list.
+2.  Select a specific company.
+3.  You can manually set or change the **Pricing Plan** for that company regardless of their current billing status.
+
+### Creating Pricing Plans
+
+In the **Admin > Plans** section, you can define your tiers:
+- **Name**: The display name of the plan (e.g., Pro, Enterprise).
+- **External ID**: The ID from your payment provider (Lemon Squeezy, Polar, or Paddle).
+- **Features**: Define which features are enabled for this specific tier.

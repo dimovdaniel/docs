@@ -16,11 +16,33 @@ description: Learn how to deploy the project to a VPS using Laravel Forge.
 
 ### 2. Deploy the Code
 
-Since you have the zip file with all dependencies:
+There are two primary ways to deploy your code to Laravel Forge: using a Git repository (recommended) or uploading via SFTP.
 
-1. You can upload the files via **SFTP** to the directory created by Forge (usually `/home/forge/yourdomain.com`).
-2. Alternatively, if you have pushed the code to a private Git repository, connect the repository in the Forge site settings.
-3. Ensure the `vendor` folder is present. If you are using Git, make sure you haven't ignored the `vendor` folder if you intend to skip `composer install` on the server.
+#### Option A: Using Git (GitHub, Bitbucket, GitLab)
+
+This is the recommended method as it allows for easy updates and version control.
+
+1. **Initialize your Local Repository**:
+   Extract the zip file locally, open your terminal in that folder, and run:
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   ```
+2. **Push to your Git Provider**:
+   Create a new **private** repository on GitHub, Bitbucket, or GitLab, and push your code there.
+3. **Connect to Forge**:
+   - In your Forge Site settings, go to the **Git Repository** section.
+   - Select your provider and enter your repository name (e.g., `your-user/your-repo`).
+   - Ensure "Install Composer Dependencies" is **unchecked** if you are pushing the `vendor` folder, or checked if you want Forge to run `composer install`.
+   - Click **Install Repository**.
+
+#### Option B: Upload via SFTP
+
+1. Connect to your server using an SFTP client (like FileZilla or Transmit) using the credentials provided by Forge when the server was created.
+2. Navigate to the site directory (usually `/home/forge/yourdomain.com`).
+3. Upload the entire contents of the extracted zip file.
+4. Ensure the `vendor` folder is included in the upload.
 
 ### 3. Set Up the Database
 

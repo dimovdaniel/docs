@@ -3,4 +3,22 @@ title: Updates
 description: Keep your installation up to date.
 ---
 
-Learn how to apply updates safely and verify that the system is running the latest version.
+You can update your installation by downloading the latest release package from us and replacing your current codebase.
+
+### How updates work
+
+Because the project is distributed as a zip file (including `vendor/`), updating is usually a simple **code replacement**:
+
+1. Download the latest release zip.
+2. Extract it locally.
+3. Upload / replace your application files on the server (or in your local environment).
+4. Keep your environment configuration (`.env`) and any user-generated files intact.
+
+<Info>
+  This is the initial release. The update process will evolve as we introduce incremental updates and more automation.
+</Info>
+
+### Changelog
+
+#### v1.0
+- Initial public release.

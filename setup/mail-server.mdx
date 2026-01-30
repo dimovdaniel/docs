@@ -1,6 +1,36 @@
 ---
-title: Mail server
-description: Configure outgoing email delivery.
+title: Mail Server
+description: Configure outgoing email delivery settings.
 ---
 
-Set SMTP or API credentials and send a test email to confirm delivery.
+To ensure your application can send notifications, password resets, and other automated emails, you must configure the mail server settings.
+
+### Accessing Mail Settings
+
+To configure your mail server, you must be logged in as an **administrator**.
+
+1.  Navigate to **Settings** in the main sidebar.
+2.  Go to **Admin** > **Mail**.
+
+### SMTP Configuration
+
+Our application uses standard SMTP for email delivery. You will need the following details from your email provider (e.g., Mailgun, SendGrid, Amazon SES, or a traditional SMTP server):
+
+- **Mail Host**: The address of your SMTP server (e.g., `smtp.mailgun.org`).
+- **Mail Port**: The port used by your server (usually `587` for TLS or `465` for SSL).
+- **Mail Username**: Your SMTP username.
+- **Mail Password**: Your SMTP password.
+- **Mail Encryption**: Choose between `tls`, `ssl`, or `none`.
+- **From Address**: The email address that will appear as the sender (e.g., `hello@yourdomain.com`).
+- **From Name**: The name that will appear as the sender (e.g., `SuperSaaS Support`).
+
+### Testing Your Configuration
+
+Once you have entered your credentials:
+
+1. Click **Save Settings**.
+2. Use the **Send Test Email** feature (if available) to verify that the connection is working correctly.
+
+<Info>
+  **Note**: If you are using a service like Gmail, you may need to generate an "App Password" rather than using your primary account password.
+</Info>

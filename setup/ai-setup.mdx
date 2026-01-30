@@ -1,0 +1,35 @@
+---
+title: AI Setup
+description: Configure your OpenRouter connection for AI features.
+---
+
+Our application uses **OpenRouter** to provide a unified interface for various Large Language Models (LLMs). This allows you to choose from a wide range of models like Claude, GPT-4, and many others.
+
+### Configuring AI Settings
+
+To configure your AI settings, you must be logged in as an **administrator**.
+
+1.  Navigate to **Settings** in the main sidebar.
+2.  Go to **Admin** > **AI**.
+
+### Getting Started with OpenRouter
+
+Before configuring the settings in the application, you need an OpenRouter account:
+
+1.  **Sign up**: Create an account at [openrouter.ai](https://openrouter.ai/).
+2.  **Get your API Key**: Navigate to [openrouter.ai/keys](https://openrouter.ai/keys) and generate a new API key.
+3.  **Explore Models**: You can find a list of available model identifiers (e.g., `anthropic/claude-3-opus`, `openai/gpt-4-turbo`) at [openrouter.ai/models](https://openrouter.ai/models).
+
+### AI Settings Configuration
+
+In the **Admin > AI** section of your application, enter the following details:
+
+-   **OpenRouter API Key**: Enter the API key you generated (it will be masked for security).
+-   **OpenRouter Model**: Enter the model identifier you wish to use. 
+    -   *Default/Example*: `openai/gpt-oss-20b:free`
+
+Click **Save** to apply the changes.
+
+<Info>
+  **Pro Tip**: Using a "free" model identifier like `openai/gpt-oss-20b:free` is a great way to test your integration without incurring costs.
+</Info>

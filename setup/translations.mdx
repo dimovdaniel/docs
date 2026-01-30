@@ -3,4 +3,25 @@ title: Translations
 description: Manage UI translations and locale strings.
 ---
 
-Add or update translations and verify the UI renders the correct language.
+As an administrator, you can manage your application's translations (languages, keys, and phrases) from the built-in translations UI.
+
+### Where to manage translations
+
+1. Log in as an **admin**.
+2. Go to **Settings → Admin → Translations** (or open the translations UI directly at `/translations`).
+
+### Translation management UI
+
+We use the **Laravel Translations UI** package for translation management. It provides a full UI for creating, editing, importing, exporting, and searching translations.
+
+- Package docs: [MohmmedAshraf/laravel-translations](https://github.com/MohmmedAshraf/laravel-translations)
+
+### Common workflows
+
+- **Add a new language**: Create the locale and start adding translations in the UI.
+- **Edit existing translations**: Search by key/value, then update phrases and publish/export when ready.
+- **Import/Export**: Use the package's import/export commands or UI features (depending on your setup) as described in the package documentation.
+
+<Info>
+  For the most up-to-date steps (including import/export commands and publishing assets), follow the official package documentation linked above.
+</Info>

@@ -5,18 +5,47 @@ description: Complete the setup using the built-in web installer.
 
 Once you have successfully hosted your files and configured your environment, the final step is to run the web-based **Installation Wizard**.
 
-### What the Wizard Handles
-
-The wizard will guide you through the following steps:
-
-1. **Environment Check**: Ensuring your server meets all PHP and extension requirements.
-2. **Folder Permissions**: Verifying that the application can write to necessary directories.
-3. **Database Configuration**: Entering your database host, name, username, and password.
-4. **Admin Account**: Creating your initial administrator user.
-5. **Final Setup**: Running migrations and seeding initial data.
-
 ### Starting the Wizard
 
 Simply visit your application's URL in any web browser. If the application is not yet configured, it will automatically redirect you to the `/install` path.
 
-*(Detailed steps for the wizard will be added here in a future update.)*
+<img
+  className="block rounded-lg shadow-md"
+  src="/images/install_step_1.png"
+  alt="Installation Wizard Welcome"
+/>
+
+### The 4-Step Process
+
+The wizard will guide you through the following four steps to get your application up and running:
+
+#### 1. Site Configuration
+Set up your application's identity. You will be asked to provide:
+- **Application Name**: The name of your SaaS platform.
+- **Application URL**: The full URL where your site is hosted (e.g., `https://supersaas.test`).
+
+#### 2. Database Configuration
+Connect to your MySQL database to store application data. You will need:
+- **Database Host** (usually `127.0.0.1` or `localhost`)
+- **Database Name**
+- **Database Username**
+- **Database Password**
+
+#### 3. WorkOS Authentication
+Set up enterprise-grade authentication with **WorkOS AuthKit**. This step requires your WorkOS credentials:
+- **Client ID** (starts with `client_`)
+- **API Key** (starts with `sk_`)
+
+<Info>
+  For a detailed guide on how to obtain these credentials, please refer to our [WorkOS Authentication Setup](/setup/authentication-setup) guide.
+</Info>
+
+**Important**: Ensure you have added your callback URL (e.g., `https://supersaas.test/authenticate`) to the **Redirects** list in your WorkOS Dashboard before proceeding.
+
+#### 4. Finalize Installation
+The final step performs the heavy lifting:
+- **Environment Setup**: Saves all your configurations to the `.env` file.
+- **Database Migrations**: Creates all necessary tables in your database.
+- **Initial Seeding**: Sets up essential data and your initial administrator account.
+
+Once complete, you will be redirected to your new dashboard!

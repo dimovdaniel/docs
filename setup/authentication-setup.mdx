@@ -1,6 +1,50 @@
 ---
-title: Cron job setup
-description: Configure scheduled tasks for background jobs.
+title: WorkOS Authentication
+description: Set up enterprise-grade authentication with WorkOS AuthKit.
 ---
 
-Set up your server cron to run the scheduler at the required interval.
+Our application uses **WorkOS AuthKit** to provide secure, enterprise-grade authentication. This guide will walk you through obtaining the necessary credentials and configuring your WorkOS dashboard.
+
+### How to get your WorkOS credentials
+
+Follow these steps to set up your WorkOS project and retrieve your API keys:
+
+1.  **Go to the WorkOS Dashboard**: Log in to your [WorkOS Dashboard](https://dashboard.workos.com/).
+2.  **Navigate to API Keys**: Click on **API Keys** in the left sidebar.
+3.  **Copy your Client ID**: Locate your **Client ID** (it starts with `client_`) and copy it.
+4.  **Create or copy a Secret Key**: Generate a new **Secret Key** (it starts with `sk_`) or copy an existing one.
+5.  **Configure Redirects**:
+    - In the WorkOS Dashboard, navigate to the **Redirects** section.
+    - Add your application's callback URL to the **Redirects** list.
+
+### Create an Admin User
+
+After your application is installed, you will need to register an account and manually assign yourself the **admin** role in the WorkOS Dashboard to access the administrative features of your SaaS.
+
+1.  **Register an Account**: Visit your application's registration page and create a new account.
+2.  **Locate the User in WorkOS**:
+    - Go to the **Users** section in the [WorkOS Dashboard](https://dashboard.workos.com/).
+    - Find the user you just created and click on their name.
+3.  **Assign the Admin Role**:
+    - Go to the **Organization memberships** tab.
+    - Click **Edit roles**.
+    - Add the `admin` role to the user.
+    - Save your changes.
+
+<Warning>
+  **Important**: You must add `https://yourdomain.com/authenticate` (or `https://supersaas.test/authenticate` for local development) to your **Redirects** list in the WorkOS Dashboard before proceeding with the installation.
+</Warning>
+
+### Environment Variables
+
+The Installation Wizard will automatically save these credentials to your `.env` file, but for reference, they are:
+
+```env
+WORKOS_CLIENT_ID=client_...
+WORKOS_API_KEY=sk_...
+WORKOS_REDIRECT_URI=https://yourdomain.com/authenticate
+```
+
+### Next Steps
+
+Once you have your credentials, return to the **Installation Wizard** to complete the setup.
