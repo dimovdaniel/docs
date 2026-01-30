@@ -50,26 +50,19 @@
     {
       "group": "Setup",
       "pages": [
-        "setup/cron-job-setup",
-        "setup/pusher-setup",
+        "setup/authentication-setup",
+        "setup/queues",
+        "setup/plugins-setup",
+        "setup/ai-setup",
         "setup/mail-server",
         "setup/pricing-plans",
         "setup/landing-page-setup",
-        "setup/translations",
-        "setup/localization-and-time-format",
-        "setup/social-login",
-        "setup/cloud-storage",
-        "setup/google-map-api",
-        "setup/one-signal-web-push-notification",
-        "setup/custom-css",
-        "setup/queues",
-        "setup/email-verification"
+        "setup/translations"
       ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://linkedin.com/company/mintlify"
+    "x": "https://x.com/dimovdaniel",
+    "linkedin": "https://linkedin.com/in/dimovdaniel"
   }
 }
