@@ -1,0 +1,49 @@
+---
+title: Laravel Forge Installation
+description: Learn how to deploy the project to a VPS using Laravel Forge.
+---
+
+[Laravel Forge](https://forge.laravel.com/) is the best way to manage your own VPS (DigitalOcean, Linode, AWS, etc.) for Laravel applications.
+
+### 1. Create a New Site
+
+1. Log in to your **Laravel Forge** dashboard.
+2. Select the server you wish to use.
+3. Under the **Sites** section, enter your domain name.
+4. Select **Project Type** as "General PHP/Laravel".
+5. Set the **Web Directory** to `/public`.
+6. Click **Add Site**.
+
+### 2. Deploy the Code
+
+Since you have the zip file with all dependencies:
+
+1. You can upload the files via **SFTP** to the directory created by Forge (usually `/home/forge/yourdomain.com`).
+2. Alternatively, if you have pushed the code to a private Git repository, connect the repository in the Forge site settings.
+3. Ensure the `vendor` folder is present. If you are using Git, make sure you haven't ignored the `vendor` folder if you intend to skip `composer install` on the server.
+
+### 3. Set Up the Database
+
+1. In the Forge dashboard, go to the **Servers** tab and select your server.
+2. Click on **Databases**.
+3. Create a new database and a database user. Forge will handle the permissions automatically.
+
+### 4. Configure the Environment
+
+1. In the **Site** settings on Forge, click on **Environment**.
+2. You don't need to manually edit the `.env` file yet, as the Installation Wizard will handle this.
+3. Ensure the PHP version is set to **8.2** or higher.
+
+### 5. Run the Installation Wizard
+
+Visit your domain in the browser:
+
+```
+https://yourdomain.com
+```
+
+You will be greeted by the **Installation Wizard** to finalize the configuration.
+
+<Card title="Next Step: Installation Wizard" icon="magic" href="/installation/wizard">
+  Proceed to the Installation Wizard guide.
+</Card>

@@ -3,4 +3,40 @@ title: Installation
 description: Install and bootstrap the application.
 ---
 
-Follow these steps to install the application and complete the initial setup.
+Choose the installation method that best fits your environment. Since the project includes all necessary dependencies in the `vendor` folder, you can skip the manual `composer install` step.
+
+<CardGroup cols={3}>
+  <Card
+    title="Local Installation"
+    icon="desktop"
+    href="/installation/local-herd"
+  >
+    Set up the project on your local machine using Laravel Herd and DBngin.
+  </Card>
+  <Card
+    title="Shared Hosting"
+    icon="server"
+    href="/installation/shared-hosting"
+  >
+    Deploy the project to any traditional shared hosting environment.
+  </Card>
+  <Card
+    title="Laravel Forge (VPS)"
+    icon="cloud"
+    href="/installation/laravel-forge"
+  >
+    Install the project on a VPS using Laravel Forge for full control.
+  </Card>
+</CardGroup>
+
+### Next Steps
+
+After completing one of the setup methods above, you will be redirected to the **Installation Wizard** to finalize your database and administrator settings.
+
+<Card
+  title="Installation Wizard"
+  icon="magic"
+  href="/installation/wizard"
+>
+  Learn more about the automated web installer.
+</Card>

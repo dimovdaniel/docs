@@ -1,0 +1,49 @@
+---
+title: Local Installation
+description: Learn how to set up the project locally using Laravel Herd and DBngin.
+---
+
+Setting up the project locally is the fastest way to start developing or testing. We recommend using **Laravel Herd** for the web server and **DBngin** for database management.
+
+### Prerequisites
+
+Before you begin, ensure you have the following tools installed:
+
+- [Laravel Herd](https://herd.laravel.com/) (macOS & Windows)
+- [DBngin](https://dbngin.com/) (macOS & Windows)
+
+### 1. Extract the Project
+
+1. Locate the zip file you received.
+2. Extract the contents to your preferred development directory (e.g., `~/Sites` or `C:\Users\Name\Herd`).
+3. Since the `vendor` folder is included, you do not need to run `composer install`.
+
+### 2. Set Up the Database
+
+1. Open **DBngin**.
+2. Click on **+ Add New Server**.
+3. Select **MySQL** (version 8.0 or higher is recommended).
+4. Give it a name (e.g., `supersaas`) and set a port (default is `3306`).
+5. Click **Create** and then **Start**.
+6. Use a database management tool like [TablePlus](https://tableplus.com/) (which integrates perfectly with DBngin) to create a new database named `supersaas`.
+
+### 3. Configure Laravel Herd
+
+1. Open **Laravel Herd**.
+2. If your project folder is within a "Parked" directory, Herd will automatically detect it and create a `.test` domain for you (e.g., `supersaas.test`).
+3. If not, you can manually add the site in the Herd settings under the **Sites** tab.
+4. Ensure the PHP version is set to **8.2** or higher.
+
+### 4. Run the Installation Wizard
+
+Once your local domain is ready, open it in your browser:
+
+```
+http://supersaas.test
+```
+
+You will be automatically redirected to the **Installation Wizard** to complete the setup.
+
+<Card title="Next Step: Installation Wizard" icon="magic" href="/installation/wizard">
+  Proceed to the Installation Wizard guide.
+</Card>
