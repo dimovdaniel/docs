@@ -28,6 +28,26 @@ Choose your preferred subscription payment provider. Each plan's **External ID**
 - **API Key**: Your Lemon Squeezy API key.
 - **Store ID**: Your unique store identifier.
 
+##### Lemon Squeezy Webhooks (required)
+
+To keep subscriptions in sync (active, cancelled/grace period, expired), you must configure a webhook in Lemon Squeezy.
+
+1. Go to **Settings** → **Webhooks** in Lemon Squeezy: `https://app.lemonsqueezy.com/settings/webhooks`
+2. Create a new webhook with:
+   - **Callback URL**: `{YOUR_APP_URL}/webhooks/lemonsqueezy`
+   - **Signing secret**: a random string between **6 and 40** characters (save the same value in Admin → Subscriptions settings)
+   - **Events (recommended minimum)**:
+     - `subscription_created`
+     - `subscription_updated`
+     - `subscription_expired`
+
+Optional (recommended for richer tracking):
+- `subscription_cancelled`, `subscription_resumed`, `subscription_payment_success`, `subscription_payment_failed`, `order_refunded`, `subscription_payment_refunded`
+
+###### How we map the webhook to your account
+
+When a user clicks “Get Started”, we send them to a Lemon Squeezy checkout URL that includes `checkout[custom][company_id]` (and `user_id`). Lemon Squeezy returns this back to us in webhook payloads under `meta.custom_data`, so we can activate the correct Company.
+
 #### ❄️ Polar (Open Source Funding)
 
 **How to get your credentials:**

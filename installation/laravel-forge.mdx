@@ -16,12 +16,6 @@ description: Learn how to deploy the project to a VPS using Laravel Forge.
 
 ### 2. Deploy the Code
 
-There are two primary ways to deploy your code to Laravel Forge: using a Git repository (recommended) or uploading via SFTP.
-
-#### Option A: Using Git (GitHub, Bitbucket, GitLab)
-
-This is the recommended method as it allows for easy updates and version control.
-
 1. **Initialize your Local Repository**:
    Extract the zip file locally, open your terminal in that folder, and run:
    ```bash
@@ -37,13 +31,6 @@ This is the recommended method as it allows for easy updates and version control
    - Ensure "Install Composer Dependencies" is **unchecked** if you are pushing the `vendor` folder, or checked if you want Forge to run `composer install`.
    - Click **Install Repository**.
 
-#### Option B: Upload via SFTP
-
-1. Connect to your server using an SFTP client (like FileZilla or Transmit) using the credentials provided by Forge when the server was created.
-2. Navigate to the site directory (usually `/home/forge/yourdomain.com`).
-3. Upload the entire contents of the extracted zip file.
-4. Ensure the `vendor` folder is included in the upload.
-
 ### 3. Set Up the Database
 
 1. In the Forge dashboard, go to the **Servers** tab and select your server.
@@ -56,7 +43,41 @@ This is the recommended method as it allows for easy updates and version control
 2. You don't need to manually edit the `.env` file yet, as the Installation Wizard will handle this.
 3. Ensure the PHP version is set to **8.2** or higher.
 
-### 5. Run the Installation Wizard
+### 5. Install/Select Node.js (Required)
+
+This project uses **Vite** and requires **Node.js `20.19+` (or `>= 22.12`)**.
+
+- In Forge, install/select **Node.js 20+** for your server/site.
+- Verify on the server:
+
+```bash
+node -v
+npm -v
+```
+
+If you see something like **Node 12 / npm 6**, your frontend build will fail (Vite uses modern syntax not supported by Node 12).
+
+### 6. (Recommended) Deploy Script: install + build assets
+
+In your Forge **Deploy Script**, add these steps (after `composer install` if you run it):
+
+```bash
+npm ci
+npm run build
+```
+
+### 7. Nginx: Livewire asset route (Required for Livewire)
+
+To ensure **Livewire** works correctly on Forge, add the following to the **end** of your site's **Nginx configuration**:
+
+```nginx
+location = /livewire/livewire.js {
+    expires off;
+    try_files $uri $uri/ /index.php?$query_string;
+}
+```
+
+### 8. Run the Installation Wizard
 
 Visit your domain in the browser:
 
