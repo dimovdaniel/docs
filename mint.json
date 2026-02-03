@@ -61,6 +61,7 @@
         "setup/mail-server",
         "setup/pricing-plans",
         "setup/landing-page-setup",
+        "setup/file-system",
         "setup/translations"
       ]
     }

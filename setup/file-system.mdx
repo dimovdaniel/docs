@@ -1,0 +1,66 @@
+---
+title: File System
+description: Choose the default upload disk and configure Amazon S3 storage.
+---
+
+Use the **File System** settings page to choose where media uploads are stored and, if needed, configure S3 credentials.
+
+## Choose the default upload disk
+
+- `public` - Default. Best for VPS/Forge.
+- `public_sharedhosting` - Best for shared hosting.
+- `s3` - Amazon S3 compatible storage (AWS or S3-compatible providers).
+
+The app saves this as the global setting `disk_for_media_upload`. After saving, caches are cleared automatically.
+
+## Amazon S3 public bucket setup
+
+These steps apply when you choose the `s3` disk.
+
+### 1) Create the bucket
+
+1. Create a bucket in the AWS console.
+2. Uncheck **Block all public access** so the bucket can serve public files.
+3. Keep the region handy (you will need it for `AWS_DEFAULT_REGION`).
+
+### 2) Allow public reads
+
+You can use either ACLs or a bucket policy. The policy option is recommended.
+
+**Bucket policy example** (replace `your-bucket-name`):
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::your-bucket-name/*"
+    }
+  ]
+}
+```
+
+### 3) Create IAM credentials
+
+Create an IAM user with programmatic access and permissions to read/write the bucket.
+
+### 4) Fill the S3 settings
+
+Set the following values in **File System**:
+
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_DEFAULT_REGION`
+- `AWS_BUCKET`
+- `AWS_URL` (use `https://<bucket>.s3.<region>.amazonaws.com`)
+- `AWS_ENDPOINT` (only for custom S3-compatible providers)
+- `AWS_USE_PATH_STYLE_ENDPOINT` (only if required by your provider)
+
+### 5) Test an upload
+
+Upload a test image and confirm the file is publicly accessible via the URL.
+
