@@ -1,0 +1,86 @@
+# How to Set Up a Cron Job on Shared Hosting
+Call a URL or web endpoint every minute
+
+**Updated: February 2026**
+
+This guide shows how to schedule a cron job that sends an HTTP request **every minute**. Common use cases include:
+
+- triggering `wp-cron.php` in WordPress
+- processing queues (Laravel or custom scripts)
+- running background tasks via a web endpoint
+- keeping lightweight automation alive
+
+### Important Warnings Before You Begin
+
+- **Every-minute jobs are resource-intensive** on shared hosting.
+  Many providers enforce a minimum interval (5–15 minutes) or suspend accounts that generate repeated high load.
+- If your endpoint takes longer than ~50 seconds, executions can overlap and cause performance issues or suspension.
+- **Recommendation**: test first with `*/5 * * * *` (every 5 minutes). Switch to `* * * * *` only if necessary **and** allowed by your host.
+
+### Most Common Control Panels on Shared Hosting (2026)
+
+| Control Panel   | Typical Hosts                                | Where to Find Cron Jobs                         |
+|-----------------|----------------------------------------------|-------------------------------------------------|
+| cPanel          | Bluehost, HostGator, SiteGround, A2, InMotion | Advanced → Cron Jobs                            |
+| Plesk           | IONOS, Liquid Web (some plans), many EU hosts | Domains → Scheduled Tasks                       |
+| DirectAdmin     | Budget and reseller hosts                     | Advanced Features → Cron Jobs                   |
+| Custom panels   | Hostinger, others                             | Search for “Cron”, “Scheduled Tasks”, “Scheduler” |
+
+### Step-by-Step: Create a Cron Job That Calls a URL Every Minute
+
+1. **Log into your hosting control panel**
+   Usually via `https://yourdomain.com/cpanel` or the link in your hosting dashboard.
+
+2. **Locate the Cron Jobs section**
+   - cPanel → Advanced → Cron Jobs
+   - Plesk → your domain → Scheduled Tasks
+   - DirectAdmin → Advanced Features → Cron Jobs
+
+3. **Disable email notifications (recommended)**
+   Leave the email field blank or use a disposable address.
+   Every-minute output can flood your inbox.
+
+4. **Set the schedule**
+   - Preset dropdown: **Once Per Minute** / **Every minute**
+   - Or use a cron expression:
+     - Every minute: `* * * * *`
+     - Every 5 minutes: `*/5 * * * *` (safer default)
+
+5. **Enter the command to call your URL**
+   Try these in order (most shared hosts support at least one):
+
+**Option A – curl (recommended)**
+```bash
+/usr/bin/curl --silent https://yourdomain.com/your-cron-path/ >/dev/null 2>&1
+```
+
+**Option B – wget**
+```bash
+/usr/bin/wget -q -O /dev/null https://yourdomain.com/your-cron-path/
+```
+
+**Option C – lynx**
+```bash
+/usr/bin/lynx -dump https://yourdomain.com/your-cron-path/ >/dev/null 2>&1
+```
+
+If you are not sure where a binary lives, ask your host or run `which curl` in SSH if you have access.
+
+6. **Save the job**
+   The job should appear in the list of scheduled tasks. Wait 1–2 minutes and check your logs.
+
+### Quick Testing Checklist
+
+- Open the URL in your browser once to confirm it responds.
+- Check your app logs to confirm the job ran.
+- If nothing happens, confirm the URL is reachable without auth or IP restrictions.
+
+### Common Issues
+
+- **No output but job runs**: This is normal if you redirect output to `/dev/null`.
+- **Job never runs**: Your host may block 1-minute intervals. Try `*/5 * * * *`.
+- **Timeouts**: Make the endpoint faster or move the logic to a queue worker.
+
+### Security Tip
+
+If the endpoint performs privileged actions, add a secret token to the URL and validate it server-side (for example, `https://yourdomain.com/cron?token=...`).

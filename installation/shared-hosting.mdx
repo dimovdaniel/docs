@@ -5,20 +5,17 @@ description: Learn how to install the project on traditional shared hosting envi
 
 Installing on shared hosting (like Bluehost, SiteGround, or HostGator) typically involves using an FTP client or a web-based File Manager.
 
-### 1. Upload the Files
+#### 1. Create your domain or subdomain 
 
-1. Log in to your hosting control panel (cPanel, DirectAdmin, etc.).
-2. Open the **File Manager** or connect via **FTP**.
-3. Upload the entire contents of the extracted zip file to your server.
-   - If this is your primary site, upload to the `public_html` directory.
-   - If this is a subdomain, upload to the specific folder created for it.
+After you have created that, you will be able to access the file manager for that domain/subdomain
 
-### 2. Set the Document Root
+Delete any default files that are maybe added.
 
-Laravel projects serve from the `public` directory. You must ensure your web server points to the `public` folder within your project.
 
-- **cPanel**: Go to **Domains**, find your domain, and update the **Document Root** to include `/public` at the end (e.g., `/public_html/public`).
-- **.htaccess**: If you cannot change the document root, you may need to place an `.htaccess` file in the root directory to redirect traffic to `/public`.
+
+### 2. Upload the files
+
+Upload the zip file that you download it, and unzip it in the 
 
 ### 3. Create a Database
 
@@ -29,7 +26,7 @@ Laravel projects serve from the `public` directory. You must ensure your web ser
 
 ### 4. Set PHP Version
 
-Ensure your hosting environment is running **PHP 8.2** or higher. Most hosts allow you to change this in the **Select PHP Version** or **MultiPHP Manager** section.
+Ensure your hosting environment is running **PHP 8.3** or higher. Most hosts allow you to change this in the **Select PHP Version** or **MultiPHP Manager** section.
 
 ### 5. Run the Installation Wizard
 
