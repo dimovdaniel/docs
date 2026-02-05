@@ -48,7 +48,8 @@
         "installation/shared-hosting",
         "installation/laravel-forge",
         "installation/wizard",
-        "updates"
+        "updates",
+        "changelog"
       ]
     },
     {

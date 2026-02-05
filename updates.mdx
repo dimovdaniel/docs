@@ -1,24 +1,47 @@
 ---
-title: Updates
-description: Keep your installation up to date.
+title: Updating Shared Hosting
+description: Reinstalling and updating on shared hosting.
 ---
 
-You can update your installation by downloading the latest release package from us and replacing your current codebase.
+# Reinstall - Updating Shared Hosting
 
-### How updates work
+# Updating - Shared hosting
 
-Because the project is distributed as a zip file (including `vendor/`), updating is usually a simple **code replacement**:
+## 1. If you have made any changes to the code
 
-1. Download the latest release zip.
-2. Extract it locally.
-3. Upload / replace your application files on the server (or in your local environment).
-4. Keep your environment configuration (`.env`) and any user-generated files intact.
+In case, you have made any changes on the code, css or js file. Backup them first so you don’t lose your work. Download them or take a note of what you have changed.
 
-<Info>
-  This is the initial release. The update process will evolve as we introduce incremental updates and more automation.
-</Info>
+### 2. Backup these files and folder in case something goes wrong
 
-### Changelog
+- [ ]  public/uploads - here are the uploaded images ( you can zip it and move it somewhere )
+- [ ]  .env ( **Required** - Download it)
+- [ ]  modified - created language files - resource/lang/YOUR_LOCALE
 
-#### v1.0
-- Initial public release.
+### 3. Download the latest code
+
+Download the code  and directly upload it on your hosting, in the same place where your existing site is.
+
+### 4. Extract the zip file
+
+Extract the zip files. Overwriting old files.
+
+### **5. Restore your .env file**
+
+Go once again to your file manager and upload your old .env file
+
+### 6. IMPORTANT: Let know the project that the system is already installed
+
+Create an empty file named **installed** in **/storage**
+
+### 7. After files are moved, open your site and go to Settings
+
+Here, if there are migrations for the database to be done, will be run.
+
+### 8.If you get an error of missing class, clear the cache
+
+Remove all the files in the following folders
+
+- [ ]  bootstrap/cache
+- [ ]  storage/framework/cache/data
+- [ ]  storage/framework/sessions
+- [ ]  storage/framework/views
